@@ -1,21 +1,28 @@
+PRAGMA foreign_keys = ON;
+
 CREATE TABLE events (
 	id INTEGER PRIMARY KEY,
 	title VARCHAR,
 	introduction VARCHAR,
-	fulltext VARCHAR
-	
+	fulltext VARCHAR,
+	user_id INTEGER REFERENCES users(id),
+	image_id INTEGER REFERENCES images(id),
+	event_type VARCHAR
 );
 
 CREATE TABLE users(
 	id INTEGER PRIMARY KEY,
 	name VARCHAR,
-	email VARCHAR	
+	email VARCHAR,
+	password VARCHAR,
+	image_id INTEGER REFERENCES images(id)
 );
 
 CREATE TABLE attendance(
-	user_id INTEGER REFERENCES users(id),
-	events_id INTEGER REFERENCES events(id),
-	PRIMARY KEY(user_id,events_id)
+	user_id INTEGER,
+	events_id INTEGER,
+	FOREIGN KEY(user_id) REFERENCES users(id),
+	FOREIGN KEY(events_id) REFERENCES events(id)	
 );
 
 CREATE TABLE comments(
@@ -25,13 +32,8 @@ CREATE TABLE comments(
 	text VARCHAR
 );
 
+CREATE TABLE images(
+	id INTEGER PRIMARY KEY
+);
 
-INSERT INTO events VALUES (null, 'Evento 1', 'Isto é o evento1, vamos todos a pesca', 'Vamos todos a pesca da sardinha, tragam as redes.
 
-P.S: Tragam o pão');
-INSERT INTO events VALUES (null, 'Evento de teste2' , 'Este evento foi cancelado porque esta a chvoer muito', 'Tragam um guarda chuva e uns bidões para guardar a água, assim já nao passamos seca este verão.
-
-Cumps.');
-INSERT INTO events VALUES (null, 'Fazer exercicio', 'Regium Sanctum Obsidium moratori di res ni', 'Siegfried is einen kleine davai davai
-
-Post Scriptum Ipsum Lorem Wingardium Leviosa');

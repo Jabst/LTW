@@ -2,9 +2,10 @@
 
 	<?php foreach($users as $user) { ?>
 	<div id="user">
-		<h2> <? echo $user['name'] ?></h2>
+		<p> <? echo $user['name'] ?></p>
 		<p> <?echo $user['email'] ?></p>
-		<a href="view_profile.php?id=<?echo $user['id']?>"> Czech this profile !! </a>
+		<img src="images/thumbs_small/<?php echo $user['image_id']; ?>.jpg">
+		<a href="view_profile.php?id=<?echo $user['id']?>"> See this profile </a>
 	</div>
 	
 	<? }  ?>

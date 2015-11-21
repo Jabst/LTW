@@ -8,10 +8,11 @@
 	
 	include_once('database/connection.php');
 	include_once('database/events.php');
-	
+	include_once('database/images.php');
 	
 	try{
-		updateEvent($_POST['id'], $_POST['title'], $_POST['introduction'], $_POST['fulltext']);
+		$id = addImage();
+		updateEvent($_POST['id'], $_POST['title'], $_POST['introduction'], $_POST['fulltext'], $id , $_POST['event']);
 	}catch (PDOException $e){
 		die($e->getMessage());
 	}

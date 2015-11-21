@@ -6,6 +6,8 @@
 	include_once('database/connection.php');
 	include_once('database/users.php');
 	
+	session_start();
+	
 	try{
 		$user = getUserByID($_GET['id']);
 	}catch (PDOException $e){

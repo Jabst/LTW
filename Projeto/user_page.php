@@ -3,6 +3,8 @@
 	include_once('database/connection.php');
 	include_once('database/users.php');
 	
+	session_start();
+	
 	try{
 		$users = getAllUsers();
 	}catch(PDOException $e){

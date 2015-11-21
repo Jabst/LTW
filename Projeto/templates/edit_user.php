@@ -2,14 +2,31 @@
 
 	<input type="hidden" name="id" value="<? echo $user['id'] ?>">
 	
-	<label>Name:
-		<input type="text" name="name" value="<? echo $user['name'] ?>">
+	<label>Old Password:
+		<input type="password" name="old_password" id="old_password" >
 	</label>
 	
-	<label>Email:
-		<input type="text" name="email" value="<? echo $user['email'] ?>">
+	<label>New Password:
+		<input type="password" name="new_password" id="new_password">
 	</label>
-
-	<input type="submit" value="Save">
-		
+	
+	<label>Retype New Password:
+		<input type="password" name="new_password2" id="new_password2">
+	</label>
+	
+	<input type="submit" value="Save" id="submit">
+	
+	
 </form>
+
+<span id="password_warning"><span>
+
+<form action="upload_image.php" method="post" enctype="multipart/form-data">
+
+	<input type="hidden" name="user_id" value="<?php echo $_SESSION['id']?>" />
+	<input type="file" name="image" />
+	<input type="submit" name="upload" />
+
+</form>
+
+<script type="text/javascript" src="jscript/edit_user.js"></script>

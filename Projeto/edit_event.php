@@ -1,10 +1,12 @@
 <?php
 
 	if(!isset($_GET['id']))
-		die('Yo mate the ID is wrong');
+		die('No ID found');
 	
 	include_once('database/connection.php');
 	include_once('database/events.php');
+	
+	session_start();
 	
 	try{
 		$event = getEventByID($_GET['id']);
